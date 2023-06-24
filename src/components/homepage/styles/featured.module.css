@@ -1,0 +1,104 @@
+.featured {
+  padding-top: 10rem;
+}
+
+.feature {
+  position: relative;
+  border-radius: 8px;
+}
+
+.feature img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+
+}
+
+.feature--desc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  padding: 55px 58px; 
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.feature:hover .feature--desc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+  /* z-index: 2; */
+}
+
+.feature::before {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  /* z-index: 3; */
+}
+
+.feature:hover::before {
+  /* display: block; */
+  opacity: 1;
+}
+
+.feature--container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.major {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+}
+
+.feature--desc .name {
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+
+.feature--desc .desc {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 22px;
+  font-feature-settings: 'liga' off;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #7F57F1;
+  box-shadow: 0px 0px 0px 6px rgba(127, 87, 241, 0.25);
+  /* border-radius: 50%; */
+  transition: all ease-in-out .1s;
+}
+
+.button:hover {
+  transform: scale(1.08);
+}

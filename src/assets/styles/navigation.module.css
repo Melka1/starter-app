@@ -1,0 +1,37 @@
+.add--navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+.add--navigation button {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: white;
+  border:none;
+}
+
+.add--navigation button p {
+  font-size: 0.9rem;
+  font-family: var(--font-text);
+}
+
+.add--navigation .back {
+  background: #454545;
+}
+
+.add--navigation .continue {
+  background: rgb(10, 109, 195);
+}
+
+.add--navigation .back:hover {
+  background: #454545ad;
+}
+
+.add--navigation .continue:hover {
+  background: rgba(10, 109, 195, 0.775);
+}

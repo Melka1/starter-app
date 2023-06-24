@@ -1,0 +1,123 @@
+.landing {
+  background: url('../../../../public/images/Hero.png');
+  padding-top: 12rem;
+  padding-bottom: 138px;
+  color: white;
+}
+
+.container {
+  width: 727px;
+}
+
+.line {
+  width: 72px;
+  height: 0;
+  border: 1px solid #FFFFFF;
+}
+
+.sub-title {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  margin-left: 10px;
+}
+
+.container h2 {
+  text-transform: capitalize;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 90px;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.container>p {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+
+  font-feature-settings: 'liga' off;
+}
+
+.container button {
+  background: #7F57F1;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid transparent;
+  color: white;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.container button:hover {
+  border: 1px solid white;
+}
+
+.search {
+  padding:39px 52px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  position: relative;
+  top: 222px;
+  color: black;
+  box-shadow: 0px 30px 40px rgba(212, 217, 232, 0.2);
+}
+
+.search::-webkit-scrollbar {
+  width: 0;
+}
+
+.search .search--title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.search--title p {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+
+  font-feature-settings: 'liga' off;
+  color: #2F234F;
+}
+
+.search--type {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:42px;
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #667085;
+}
+
+.search--type button {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  background: #7F57F1;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+
+.search--type button:hover {
+  background-color: white;
+  color: #7F57F1;
+  border: 1px solid #2F234F;
+}

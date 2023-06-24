@@ -1,0 +1,37 @@
+/* .our-features {
+
+} */
+
+.our--feature--container {
+  display: flex;
+  margin-top: 42px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.our--feature--list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.our--feature {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  background: #FFFFFF;
+  padding: 24px;
+  box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+.our--feature--desc {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  font-feature-settings: 'liga' off;
+
+  color: rgba(47, 35, 79, 0.5);
+}

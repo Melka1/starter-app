@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Type {
+  RENT
+  SALE
+}
+
+model User {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  email   String   @unique
+  password String
+  name    String
+  role    Role @default(USER)
+  propertys Property[]
+  likes String[]
+}
+
+model Property {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  propertyId String @db.ObjectId
+  author   User   @relation(fields: [propertyId], references: [id])
+  owner   Owner      
+  type Type @default(RENT)
+  //location
+  propertyNo String
+  state String
+  city String
+  zipcode String
+  gps GPS
+  //description
+  area String
+  bedroomCount String
+  bathroomCount String
+  rule String[]
+  facility String[]
+  description String?
+  images Image[]
+  //price
+  price String
+  paymentType PaymentType? @default(Mon)
+  duration String
+  downPayment String
+  lateCharge String
+  lateChargeType PaymentType? @default(Mon)
+
+  status PublishStatus @default(DRAFT)
+  available Availability @default(AVAILABLE)
+}
+
+enum PublishStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum Availability {
+  AVAILABLE
+  NOT_AVAILABLE
+  IN_PROGRESS
+}
+
+type Owner {
+  ownerType OwnerType @default(Personal)
+  firstName String
+  lastName String
+  email String
+  phonenNo String
+  // social Social[]
+}
+
+type Social {
+  socialType String
+  link String
+}
+
+type GPS {
+  lat String
+  lng String
+}
+
+enum OwnerType {
+  Personal
+  Organization
+}
+
+enum PaymentType {
+  Day
+  Mon
+  Week
+  Year
+}
+
+type Image {
+  url String
+  // size Size[]
+}
+
+type Size {
+  width String
+  height String
+}

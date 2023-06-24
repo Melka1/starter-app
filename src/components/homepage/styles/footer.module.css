@@ -1,0 +1,106 @@
+.footer {
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); */
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.footer>* {
+  margin: 0;
+  
+}
+
+.footer--logo--container {
+  max-width: 312px;
+}
+
+.footer--logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.footer--logo--name {
+  color: #7F57F1;
+  font-size: 28px;
+  font-family: var(--font-text);
+
+
+}
+
+.footer--logo--name span {
+  color: #2F234F;
+}
+
+.footer--logo--desc {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  font-feature-settings: 'liga';
+  color: rgba(47, 35, 79, 0.5);
+}
+
+.footer--recent--props {
+  padding-top: 25px;
+}
+
+.footer--recent--props--item {
+  display: flex;
+  gap: 16px;
+}
+
+.property--description {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: #2F234F;
+  display: flex;
+  flex-direction: column;
+  max-width: 264px;
+}
+
+.footer--recent--props--title {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #2F234F;
+  margin-bottom: 24px;
+}
+
+.property--description .cost {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  color: #7F57F1;
+  margin-top: auto;
+}
+
+.footer--recent--props--item:first-of-type {
+  margin-bottom: 20px;
+}
+
+.contact--info {
+  padding-top: 25px;
+  max-width: 312px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact--info .address {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: #2F234F;
+}
+
+.contact--info .address span {
+  color: rgba(47, 35, 79, 0.5);
+}

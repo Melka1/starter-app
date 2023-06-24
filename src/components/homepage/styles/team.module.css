@@ -1,0 +1,63 @@
+.teams {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 50px;
+}
+
+.team--member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  background: #FFFFFF;
+  
+  border-radius: 8px;
+  gap: 16px;
+  transition: all ease 0.3s;
+}
+
+.team--member:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
+}
+
+.team--member--name {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  text-transform: capitalize;
+  text-align: center;
+  color: #2F234F;
+}
+
+.team--member--title {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: rgba(47, 35, 79, 0.5);
+}
+
+.socials {
+  /* display: flex; */
+  gap: 20px;
+  visibility: hidden;
+  color: #2F234F;
+  display: flex;
+}
+
+.socials * {
+  cursor: pointer;
+}
+
+.socials *:hover {
+  color: #7F57F1;
+}
+
+.team--member:hover .socials {
+  
+  visibility: visible;
+} 
