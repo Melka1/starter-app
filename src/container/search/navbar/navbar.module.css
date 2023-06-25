@@ -15,7 +15,7 @@
 
 .navbar--logo--name {
   color: #7F57F1;
-  font-size: 28px;
+  font-size: 22px;
   font-family: var(--font-text);
 }
 
@@ -30,40 +30,43 @@
   background: #FFFFFF;
   border: 1px solid #EAEAEA;
   border-radius: 8px;
-  padding: 14px;
+  padding: 8px;
   margin-bottom: 40px;
+  max-width: 200px;
+  width: -webkit-fill-available;
 }
 
 .navbar--input input {
   border: none;
   outline: none;
   font-family: var(--font-text);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 21px;
   font-weight: 500;
-  color: #ADA7A7;
+  color: #575555;
   display: flex;
+  width:100%;
 }
 
 .navbar--list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .navbar--list--title {
   font-family: var(--font-text);
   font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 24px;
   color: #2F234F;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .navbar--list ul {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .navbar--list ul li {
@@ -82,7 +85,7 @@
 .navbar--list ul li a p {
   font-family: var(--font-text);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 21px;
   color: #2F234F;
   opacity: 0.6;
@@ -122,3 +125,4 @@
   color: #006845 !important;
   opacity: 1 !important;
 }
+

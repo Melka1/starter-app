@@ -29,7 +29,7 @@ export default async function handler(req, res){
 
   userInfo = JSON.parse(fields.userInfo)
   // console.log("files", files, "username ",userInfo.firstName)
-  urlList = files.myImage?.map(image=>({url:'http://localhost:3000/public/images/property/'+image.newFilename}))
+  urlList = files.myImage?.map(image=>({url:'/images/property/'+image.newFilename}))
 
   if(!files.myImage) {
     return res.status(404).json({messsage:'Image upload has not been performed!'})

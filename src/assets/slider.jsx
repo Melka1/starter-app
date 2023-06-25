@@ -1,9 +1,9 @@
 'use client'
 
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import { styled, Box } from '@mui/system';
 import Slider, { sliderClasses } from '@mui/base/Slider';
-
+import styles from './styles/slider.module.css';
 
 
 const marks = [
@@ -20,22 +20,23 @@ export default function RangeSlider({setValue, value}) {
   
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    console.log(newValue)
+    setValue({min:newValue[0], max:newValue[1]});
   };
 
-  React.useEffect(()=>{
-    document?.getElementsByClassName('MuiSlider-markLabel')[0]?.classList.add("move")
+  useEffect(()=>{
+    document?.getElementsByClassName('MuiSlider-markLabel')[0]?.classList.add(styles["move"])
   },[])
 
   return (
-    <Box sx={{ width: 300 }}>
+    <Box sx={{ width: 260 }}>
       <StyledSlider
         defaultValue={[5000, 8000]}
         getAriaLabel={() => 'Temperature range shift'}
         getAriaValueText={valuetext}
-        valueLabelDisplay="auto"
-        min={100}
-        max={10000}
+        onChange={handleChange}
+        min={500}
+        max={30000}
         marks={marks}
         step={500}
         disableSwap
@@ -77,7 +78,7 @@ const StyledSlider = styled(Slider)(
     width: 100%;
     height: 6px;
     border-radius: 10px;
-    background-color: #F1F1F1;
+    background-color: white;
   }
 
   & .${sliderClasses.track} {
@@ -108,6 +109,8 @@ const StyledSlider = styled(Slider)(
     &.${sliderClasses.active} {
       box-shadow: 0 0 0 0.25rem rgba(0, 104, 69,0.5);
     }
+
+    
   }
 
   & .${sliderClasses.mark} {
@@ -126,6 +129,7 @@ const StyledSlider = styled(Slider)(
   }
   
   & .${sliderClasses.markLabel} {
+    font-family:var(--font-text);
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
@@ -135,6 +139,14 @@ const StyledSlider = styled(Slider)(
     margin-top: 8px;
     color: #000000;
     opacity: 0.5;
+  }
+
+  & .${sliderClasses.valueLabel} {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    position: absolute;
+    top: 24px;
   }
 `,
 );

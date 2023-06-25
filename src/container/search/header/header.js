@@ -1,14 +1,17 @@
 import React from 'react'
 import {MdOutlineNotificationImportant} from 'react-icons/md'
 import {BsImage} from 'react-icons/bs'
-import './header.module.css'
+import styles from './header.module.css'
 
-function Header() {
+
+
+function Header({date}) {
+  console.log(date)
   return (
     <div className={styles['header']}>
       <div className={styles['welcome']}>
         <h1>Welcome, Melka</h1>
-        <p>Tue, 07 June 2022</p>
+        <p>{date}</p>
       </div>
 
       <div className={styles['profile']}>
@@ -24,5 +27,7 @@ function Header() {
     </div>
   )
 }
+
+
 
 export default Header

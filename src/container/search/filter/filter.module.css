@@ -1,7 +1,10 @@
 .filter--wrapper {
   overflow-y: auto;
   scrollbar-gutter: stable;
-  min-width: 350px;
+  min-width: 300px;
+  padding: 20px 10px;
+  background: whitesmoke;
+  border-radius: 13px;
 }
 
 .filter--wrapper h1 {
@@ -32,10 +35,10 @@
 .container {
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
+  padding-left: 25px;
+  margin-bottom: 10px;
   cursor: pointer;
-  font-size: 22px;
+  /* font-size: 22px; */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -57,10 +60,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 24px;
-  width: 24px;
-  background-color: transparent;
-  border-radius:8px;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border-radius:6px;
   border:1px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -89,10 +92,10 @@
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 8px;
-  top: 4px;
-  width: 5px;
-  height: 10px;
+  left: 6px;
+  top: 3px;
+  width: 4px;
+  height: 8px;
   border: solid white;
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
@@ -103,15 +106,15 @@
 .container .text {
   font-family: var(--font-text);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 13px;
+  line-height: 21px;
   color: #000000;
 }
 
 .place--filter {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 20px;
+  column-gap: 10px;
 }
 
 .MuiSlider-markLabel:first-of-type{
@@ -134,7 +137,7 @@
   background: #FFFFFF;
   border: 1px solid #EAEAEA;
   border-radius: 8px;
-  padding: 15px 16px;
+  padding: 5px 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -145,22 +148,42 @@
   border: none;
   font-family: var(--font-text);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 21px;
   color: #000000;
 }
 
 .size .filter--header {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .min--max div p {
   font-family: var(--font-text);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 21px;
   text-align: right;
   color: #000000;
   opacity:  0.5;
 
+}
+
+.apply--filter {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-family: var(--font-text);
+  outline: none;
+  border: 1px solid transparent;
+  background: #006845;
+  color: white;
+  font-size: 16px;
+  word-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.apply--filter:hover {
+  background: #00684597;
 }

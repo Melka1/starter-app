@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../pages/search/search.module.css'
+import styles from './navbar.module.css'
 import Logo from '../../../assets/logo'
 import { FiSearch } from 'react-icons/fi'
 import {IoMdSettings} from 'react-icons/io'
@@ -12,7 +12,7 @@ function SearchNavRar() {
   return (
       <div className={styles['search--navbar']}>
         <div className={styles['navbar--logo']}>
-          <Logo color='#2F234F' width={50} height={50} style={{display:'flex'}}/>
+          <Logo color='#2F234F' width={40} height={40} style={{display:'flex'}}/>
           <h1 className={styles['navbar--logo--name']}>Logo<span>ipsum</span></h1>
         </div>
 
@@ -26,8 +26,8 @@ function SearchNavRar() {
           <ul>
             <li>
                 <Link href={'/'}>
-                  <HiCurrencyDollar color='green' fontSize={24}/>
-                  <p className={styles['active']}>Buy</p>
+                  <HiCurrencyDollar color='gray' fontSize={24}/>
+                  <p>Buy</p>
               </Link>
             </li>
             <li>
@@ -38,8 +38,8 @@ function SearchNavRar() {
             </li>
             <li>
               <Link href={'/'}>
-                <GiHouse color='gray' fontSize={24} />
-                <p>Rent</p>
+                <GiHouse color='green' fontSize={24} />
+                <p className={styles['active']}>Rent</p>
               </Link>
             </li>
             <li>
