@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/public/images/property
+public/images/property
 /.pnp
 .pnp.js
 
@@ -34,3 +34,50 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+public/images/property/1687557812404_Prop8.jpg
+public/images/property/1687512648428_Prop1.png
+public/images/property/1687512784153_Prop2.png
+public/images/property/1687548695866_Prop8.jpg
+public/images/property/1687548696040_Prop7.jpg
+public/images/property/1687552466745_Prop11.jpg
+public/images/property/1687552466904_Prop10.jpg
+public/images/property/1687552466963_Prop9.jpg
+public/images/property/1687552467139_Prop8.jpg
+public/images/property/1687557017014_Prop11.jpg
+public/images/property/1687557017230_Prop10.jpg
+public/images/property/1687557017236_Prop9.jpg
+public/images/property/1687557017252_Prop8.jpg
+public/images/property/1687557017688_Prop11.jpg
+public/images/property/1687557017721_Prop10.jpg
+public/images/property/1687557017728_Prop9.jpg
+public/images/property/1687557018055_Prop8.jpg
+public/images/property/1687557363414_Image 6.png
+public/images/property/1687557363454_Image 5.png
+public/images/property/1687557363482_Image 4.png
+public/images/property/1687557812200_Prop11.jpg
+public/images/property/1687557812296_Prop10.jpg
+public/images/property/1687557812327_Prop9.jpg
+public/images/property/1687557812404_Prop8.jpg
+public/images/property/1687512648428_Prop1.png
+public/images/property/1687512784153_Prop2.png
+public/images/property/1687548695866_Prop8.jpg
+public/images/property/1687548696040_Prop7.jpg
+public/images/property/1687552466745_Prop11.jpg
+public/images/property/1687552466904_Prop10.jpg
+public/images/property/1687552466963_Prop9.jpg
+public/images/property/1687552467139_Prop8.jpg
+public/images/property/1687557017014_Prop11.jpg
+public/images/property/1687557017230_Prop10.jpg
+public/images/property/1687557017236_Prop9.jpg
+public/images/property/1687557017252_Prop8.jpg
+public/images/property/1687557017688_Prop11.jpg
+public/images/property/1687557017721_Prop10.jpg
+public/images/property/1687557017728_Prop9.jpg
+public/images/property/1687557018055_Prop8.jpg
+public/images/property/1687557363414_Image 6.png
+public/images/property/1687557363454_Image 5.png
+public/images/property/1687557363482_Image 4.png
+public/images/property/1687557812200_Prop11.jpg
+public/images/property/1687557812296_Prop10.jpg
+public/images/property/1687557812327_Prop9.jpg
+public/images/property/1687557812404_Prop8.jpg

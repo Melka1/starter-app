@@ -1,0 +1,22 @@
+.search {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.search--display {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  flex-grow: 1;
+  padding: 32px;
+  padding-bottom: 0;
+  gap: 32px;
+  height: 100%;
+}
+
+.filter-and-list {
+  display: flex;
+  height: 80%;
+  gap: 33px;
+}

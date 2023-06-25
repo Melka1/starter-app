@@ -82,7 +82,7 @@ function Page() {
   async function handleSaveDraft(){
     let userInfo = JSON.stringify({ firstName, lastName, email, phone, ownerType, 
       name, images, description, bathroom, bedroom, area,
-      stateName, city, zipcode, unit,
+      stateName, city, zipcode, unit, gps,
       duration, downPayment, rentalCost, rentalCostType, lateCharge, lateChargeType,
       rules, additionalFacilities, 'status':'DRAFT', propertyId:user.id})
 

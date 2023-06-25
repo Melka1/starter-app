@@ -8,12 +8,12 @@ import Slider, { sliderClasses } from '@mui/base/Slider';
 
 const marks = [
   {
-    value: 100,
-    label: '100$',
+    value: 1000,
+    label: '1000$',
   },
   {
-    value: 10000,
-    label: '10000$',
+    value: 30000,
+    label: '30000$',
   }
 ]
 export default function RangeSlider({setValue, value}) {
@@ -30,12 +30,15 @@ export default function RangeSlider({setValue, value}) {
   return (
     <Box sx={{ width: 300 }}>
       <StyledSlider
-        defaultValue={[500, 5000]}
-        getAriaLabel={() => 'Temperature range'}
+        defaultValue={[5000, 8000]}
+        getAriaLabel={() => 'Temperature range shift'}
         getAriaValueText={valuetext}
+        valueLabelDisplay="auto"
         min={100}
         max={10000}
         marks={marks}
+        step={500}
+        disableSwap
       />
     </Box>
   );

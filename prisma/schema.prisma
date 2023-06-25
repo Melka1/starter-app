@@ -42,7 +42,7 @@ model Property {
   state String
   city String
   zipcode String
-  gps GPS
+  gps Gps
   //description
   area String
   bedroomCount String
@@ -88,7 +88,7 @@ type Social {
   link String
 }
 
-type GPS {
+type Gps {
   lat String
   lng String
 }
