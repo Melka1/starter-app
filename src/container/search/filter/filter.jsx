@@ -3,20 +3,7 @@ import styles from './filter.module.css'
 import Select, {components} from 'react-select'
 import {CiLocationOn} from 'react-icons/ci'
 import RangeSlider from '../../../assets/slider'
-
-const options = [
-  { value: 'addis-ababa', label: 'Addis Ababa' },
-  { value: 'oromia', label: 'Oromia' },
-  { value: 'amhara', label: 'Amhara' },
-  { value: 'tigray', label: 'Tigray' },
-  { value: 'snnr', label: 'SNNR' },
-  { value: 'afar', label: 'Afar' },
-  { value: 'somale', label: 'Somale' },
-  { value: 'benshangul', label: 'Benshangul' },
-  { value: 'gambela', label: 'Gambela' },
-  { value: 'diredawa', label: 'Dire-dawa' },
-  { value: 'harar', label: 'Harar' },
-];
+import {options} from '../../../data/locations'
 
 const Control = ({ children, ...props }) => {
   
@@ -50,7 +37,7 @@ export function Filter({
         <div className={styles["location"]}>
           <p className={styles["filter--header"]}>Location</p>
           <Select
-              defaultValue={location}
+              defaultValue={options[0]}
               onChange={handleLocationChange}
               options={options}
               placeholder='Location'

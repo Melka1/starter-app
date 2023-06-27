@@ -6,8 +6,8 @@ import axios from 'axios'
 import {useRouter} from 'next/navigation'
 
 import { OwnerData } from '../../../container/AddProperty/OwnerData'
-import { NavBar } from '../../../components/homepage/NavBar'
-import { AboutProperty } from '../../../container/AddProperty/Aboutproperty'
+import { NavBar } from '../../../components/homepage'
+import { AboutProperty } from '../../../container/AddProperty/AboutProperty'
 
 import {AiOutlineLeft, AiOutlineCheck, AiOutlineCloudUpload} from 'react-icons/ai'
 import {BsChevronRight} from 'react-icons/bs'
@@ -33,7 +33,7 @@ function Page() {
   console.log(user)
   if(!user)router.push('/login')
 
-  const [addLevel, setAddLevel] = useState(1)
+  const [addLevel, setAddLevel] = useState(0)
   //about the owner
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -106,7 +106,7 @@ function Page() {
   console.log(formData.get('userInfo'), formData.get('myImage'))
 
   return (
-    <div style={{minHeight:'100vh'}}>
+    <div style={{minHeight:'100vh', background:'#535353', color:'white'}}>
         <NavBar />
         <div style={{paddingTop:'4rem'}}>
           <div className={styles['navigation']}  style={{display:'flex', width:'100%', justifyContent:'space-between', padding:'1rem 5rem', background:'rgba(0,0,0,0.5)'}}>

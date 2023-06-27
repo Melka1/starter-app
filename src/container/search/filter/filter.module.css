@@ -1,6 +1,7 @@
 .filter--wrapper {
   overflow-y: auto;
   scrollbar-gutter: stable;
+  max-width: 300px;
   min-width: 300px;
   padding: 20px 10px;
   background: whitesmoke;

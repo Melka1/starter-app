@@ -6,7 +6,7 @@ import styles from './header.module.css'
 
 
 function Header({date}) {
-  console.log(date)
+  // console.log(date)
   return (
     <div className={styles['header']}>
       <div className={styles['welcome']}>

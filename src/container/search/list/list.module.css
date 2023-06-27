@@ -1,11 +1,16 @@
 .search--list--display {
   overflow: auto;
+  scrollbar-gutter: stable;
+  background: whitesmoke;
+  padding: 20px;
+  border-radius: 0.5rem;
 }
 
 .search--lists {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  /* padding-right: 20px; */
 }
 
 .search--lists a {
@@ -17,6 +22,11 @@
 
 .search--lists a:hover {
   border-color: rgb(9, 84, 108);
+}
+
+.search--lists a:hover img {
+  transform: scale(1.1);
+  transition: 0.3s ease-in-out;
 }
 
 .search--list--title {
@@ -44,7 +54,7 @@
 }
 
 .prop--desc {
-  padding: 20px;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;

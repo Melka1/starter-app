@@ -1,0 +1,484 @@
+.property--landing--page {
+  position: relative;
+}
+
+/* #map {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.2);
+} */
+
+.property--landing--page .landing--page {
+  position: absolute;
+  padding: 6rem 0 2rem 2rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  /* align-items: start; */
+}
+
+.landing--page .left .params {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: baseline; */
+}
+
+.landing--page .params div {
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 21px;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: white;
+}
+
+.landing--page .params div button,
+.location--search button {
+  border: 1px solid transparent;
+  outline: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.param {
+  background: black !important;
+  color: white !important;
+}
+
+.param button {
+  border-color:white !important;
+  color: white !important;
+}
+
+.landing--page button,
+.other--properties button {
+  cursor: pointer;
+}
+
+.landing--page button:hover,
+.other--properties button:hover {
+  background: rgba(124, 124, 124, 1) !important;
+  color: white;
+}
+
+.location--search {
+  margin-top: 2rem;
+  display: flex;
+  padding: 0.5rem 1rem;
+  background: white;
+  border-radius: 16px;
+  gap: 0.5rem;
+  width: fit-content;
+  align-items: center;
+  
+}
+
+.location--search input {
+  font-size: 16px;
+  line-height: 21px;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: none;
+}
+
+.right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 2rem 0 0 2rem;
+}
+
+.product--description {
+  display: flex;
+  flex-direction: column;
+}
+
+.product--description--header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product--description--header a {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 0.5em;
+  border-radius: 4px;
+}
+
+.product--description--header a:hover {
+  background: lightgray;
+}
+
+.product--description--header a .share {
+  color: lightgray;
+  font-size: 0.8rem;
+}
+
+.product--description--header a:hover * {
+  color: black;
+}
+
+.product--images {
+  overflow: hidden;
+  position: relative;
+  border-radius: 1.5rem;
+  background: lightgray;
+
+}
+
+.carousel {
+  height: 100%;
+  display: flex;
+  /* overflow: auto; */
+  scrollbar-width: none;
+  transition: all 0.4s ease-in-out;
+  border-radius: 1.5rem;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.product--images .carousel img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  /* border-radius: 1.5rem; */
+}
+
+.image--navigator {
+  position: absolute;
+  bottom: 2rem;
+  /* left: 50%; */
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.image--navigator button {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.image--navigator button:hover {
+  transform: scale(1.4);
+  background: white !important;
+}
+
+.image--navigator button span {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+}
+
+.property--location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.property--location p {
+  font-size: 0.8rem;
+}
+
+.product--description h4 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.property--stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: aliceblue;
+  border-radius: 1rem;
+}
+
+.property--stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 18px;
+}
+
+.property--stats span p {
+  font-size: 0.8rem;
+}
+
+.property--description--content {
+  margin-top: 1rem;
+    font-size: 0.7rem;
+    line-height: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.property--description--content a {
+  color: rgb(64, 194, 194);
+}
+
+.property--description--content a:hover {
+  text-decoration: underline;
+}
+
+.property--price {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  font-size: 0.8rem;
+  margin-top: auto;
+  margin-bottom: 1rem;
+  font-family: var(--font-text);
+}
+
+.property--price p:first-of-type {
+  font-weight: bold;
+}
+
+.property--price .cost {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.property--price .cost span {
+  font: 0.8rem normal;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controls button {
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: var(--font-text);
+  cursor: pointer;
+}
+
+.controls .messages {
+  padding: 0.75rem;
+}
+
+.controls .contacts {
+  height: 100%;
+  flex-grow: 1;
+  background: black;
+  color: white;
+}
+
+.top--content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+  background: rgba(128, 128, 128, 0.5);
+  backdrop-filter: blur(6px);
+  width: 100%;
+}
+
+.top--content>* {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 50%;
+}
+
+.top--content button {
+  border: none;
+  outline: none;
+}
+
+.top--content button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.top--content div p {
+  font-size: 0.9rem;
+  font-family: var(--font-text);
+}
+
+.other--properties {
+  display: flex;
+  /* gap: 1rem; */
+  width:100%;
+  /* overflow: auto; */
+  padding: 1rem;
+  position: relative;
+  box-shadow: 0 0 10px 2px lightgray;
+}
+
+.other--properties .props .the--prop {
+  display: flex;
+  flex-direction: column;
+  width:250px;
+  border-radius: 1rem;
+  border: 2px solid rgb(182, 177, 177);
+  overflow: hidden;
+}
+
+.other--properties .props .the--prop img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  height: auto;
+  object-fit: cover;
+}
+
+.property--specs {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: white;
+}
+
+.features span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 18px;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  /* padding: 1rem; */
+}
+
+.features span p, .property--specs .location {
+  font-size: 0.8rem;
+}
+
+.property--specs .location {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.property--specs .cost {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.property--specs .cost span {
+  font: 0.8rem normal;
+  font-family: var(--font-text);
+}
+
+.the--prop .like {
+  width: 35px;
+  height: 35px;
+  border: 1px solid transparent;
+  outline: none;
+  color: gray;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: initial;
+  /* padding: ; */
+}
+
+.the--prop .like:hover {
+  background-color: transparent;
+  color: white;
+}
+
+.like svg {
+  width: 80%;
+  height: 80%;
+}
+
+.the--prop {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.the--prop:hover {
+  border-color: black !important;
+  /* transform: scale(1.05); */
+}
+
+.props {
+  display: flex;
+  gap: 3rem;
+  padding: 0 3rem;
+  /* overflow: auto; */
+  transition: all 0.3s ease-in-out;
+}
+
+.area {
+  position: relative;
+}
+
+.area::before {
+  position: absolute;
+  content: "2";
+  top: 0;
+  right: -4px;
+  font-size: 8px;
+
+}
+
+.other--properties>button {
+  position: absolute;
+  top: 0;
+  width: 3rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 1rem;
+  left: 0;
+  outline: none;
+  border: none;
+}
+
+.other--properties .scroll--right {
+  right: 0;
+  left: unset;
+}

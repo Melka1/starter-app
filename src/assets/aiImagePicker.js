@@ -24,14 +24,14 @@ const Imperative = ({style, setImages, images, filesContent, setFilesContent, fo
               style={{position:'absolute', top:'5px', right:'5px', borderRadius:'50%', border:'none', cursor:'pointer', width:'20px', height:'20px', display:'flex', alignItems:'center', justifyContent:'center'}}
               onClick={() => {}}
             >
-              <AiOutlineClose color={'white'} fontSize={14} />
+              <AiOutlineClose color={'darkslategray'} fontSize={14} />
             </button>
           </div>
         </div>
       ))}
       <input id='unit--images' type={'file'} hidden onChange={(e)=>handleImages(e)} multiple/>
 
-      <button style={{width:'100px', height:'100%', ...style}}>
+      <button style={{width:'100px', height:'100%',outline:'none', background:'transparent', border:'1px solid whitesmoke', ...style}}>
         <BsImage style={{}} color='white' fontSize='1rem'/>
         <p style={{fontSize:'0.6rem'}}>Upload or drag photo here</p>
       </button>

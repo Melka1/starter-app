@@ -4,7 +4,7 @@ import Logo from '../../../public/images/Vector.svg'
 import styles from './styles/navbar.module.css'
 import Link from 'next/link'
 
-export const NavBar=()=> {
+export default function NavBar(){
   return (
     <div className={styles.navbar}>
       <div className={styles.logo} >

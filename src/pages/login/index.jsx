@@ -50,7 +50,7 @@ export default function SignIn(){
     }
  
     return (
-        <div>
+        <div className={styles['signin--wrapper']}>
           <div className={styles["signin--container"]}>
               <h1 className={styles["signin--title"]}>Log In</h1>
               {error && <div className={styles["submit--error"]}>{error}</div>}

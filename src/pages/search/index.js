@@ -22,20 +22,23 @@ function Page({date}) {
 
   const [list, setList] = useState([])
 
-  console.log({user, location, price, bathroomCount, bedroomCount, type, area})
+  // console.log({user, location, price, bathroomCount, bedroomCount, type, area})
 
   function handleFilter(){
     axios.post('/api/property', {
       data:{
-        location:location.label,
-        price,
+        location:location.value,
+        price:{
+          min:price.min.toString(),
+          max:price.max.toString()  
+        },
         area,
         bedroomCount,
         bathroomCount,
       }
     })
     .then(data => {
-      console.log(data.data)
+      // console.log(data)
       setList(data.data)
     })
     .catch(err => console.log(err))
@@ -57,7 +60,7 @@ function Page({date}) {
           type={type} setType={setType}
           handleFilter={handleFilter}
         />
-        <List list={list}/>
+        <List lists={list} user={user} />
        </div>
       </div>
     </div>

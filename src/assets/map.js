@@ -27,7 +27,7 @@ const Map = ({
       map.setView([center.lat, center.lng], 15);
     }
 
-    if(gps.lat){
+    if(gps?.lat){
       if(!map){map = L.map('map').setView([gps.lat, gps.lng], 15);}
       marker = L.marker([gps.lat, gps.lng]).addTo(map);
       popup = L.popup();

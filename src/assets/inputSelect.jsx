@@ -12,7 +12,7 @@ function InputSelect({setPrimarySelect, primarySelect, secondarySelect, setSecon
       borderRadius: '0.5rem',
       overflow: 'hidden',
       alignItems: 'center',
-      padding:'0 0.5rem'
+      padding:'0.5rem'
     },
     input: {
       border: 'none',
@@ -23,8 +23,8 @@ function InputSelect({setPrimarySelect, primarySelect, secondarySelect, setSecon
       border: 'none',
       background: 'transparent',
       outline:'none',
-      width: `${!primarySelect?'100%':''}`,
-      padding: `${!primarySelect?'0.5rem':''}`
+      // width: `${!primarySelect?'100%':''}`,
+      // padding: `${!primarySelect?'0.5rem':''}`
     }, 
     option: {
       background: '#2d2e2e',

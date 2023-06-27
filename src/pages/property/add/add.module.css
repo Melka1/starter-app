@@ -1,6 +1,6 @@
 .navigation--title {
     font-family: var(--font-text);
-    font-size: 0.9rem;
+    font-size: 0.9rem; 
   }
   
   .back--button {
@@ -105,7 +105,7 @@
   
   .form {
     padding: 0.5rem;
-    background: rgb(45, 46, 46);
+    background: #2d2e2e80;
     border-radius: 0.5rem;
   }
   
@@ -114,6 +114,17 @@
     flex-grow: 1;
     flex-direction: column;
   }
+
+  .content .description--pane input {
+    background: #857f7f45;
+    color: whitesmoke;
+    outline:none
+  }
+
+  /* .content .description--pane input:autofill {
+    background: whitesmoke;
+    color: rgb(44, 193, 18);
+  } */
   
   .content .preview--pane {
     display: flex;
