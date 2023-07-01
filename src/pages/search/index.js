@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import axios from 'axios'
 import styles from './search.module.css'
 import SearchNavRar from '../../container/search/navbar/navbar'
@@ -43,10 +43,17 @@ function Page({date}) {
       // console.log(data)
       setList(data.data)
       setProperties(data.data)
-      localStorage.setItem('images', JSON.stringify(data.data))
+      localStorage.setItem('props', JSON.stringify(data.data))
     })
     .catch(err => console.log(err))
   }
+
+  useEffect(() => {
+    let localProps = JSON.parse(localStorage.getItem('props'))
+    let propList = properties.length!=0? properties:localProps
+    setList(propList)
+  },[])
+
   return (
     <div className={styles.search}>
       <SearchNavRar/>

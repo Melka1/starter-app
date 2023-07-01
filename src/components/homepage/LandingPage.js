@@ -19,7 +19,7 @@ const roomCount = [
 
 function LandingPage({
     setLocation, setBedroomCount, setBathroomCount, setPropertyType,
-    location, bedroomCount, bathroomCount, propertyType, handleSearch
+    location, bedroomCount, bathroomCount, propertyType, handleFilter
   }) {
 
   const handleLocationChange=(selectedLocation)=>{
@@ -90,7 +90,7 @@ function LandingPage({
             options={roomCount}
             placeholder='Bathroom'
           />
-          <button onClick={handleSearch}>Search</button>
+          <button onClick={handleFilter}>Search</button>
         </div>
       </div>
     </div>

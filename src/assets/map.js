@@ -1,5 +1,6 @@
 'use client'
 
+import {Link} from 'next/link'
 import L from 'leaflet'
 
 import 'leaflet/dist/leaflet.css'
@@ -16,7 +17,7 @@ L.Icon.Default.mergeOptions({
 })
 
 const Map = ({
-  center, gps, setGPS
+  center, gps, setGPS, properties
 }) => {
 
   var map;
@@ -24,10 +25,14 @@ const Map = ({
   var marker;
   useEffect(()=>{
     if(center){
-      if(!map){map = L.map('map').setView([center.lat-(-0.002960965225268), center.lng-(-0.01120090484619)], 15);}
+      if(map == null){map = L.map('map').setView([center.lat-(-0.002960965225268), center.lng-(-0.01120090484619)], 15);}
       marker = L.marker([center.lat, center.lng]).addTo(map);
-      marker.bindPopup("<b>This is the property</b>").openPopup();
+      marker.bindPopup("<b>This is the property</b>");
       popup = L.popup();
+      properties.forEach((element, index) => {
+       var marker1 = L.marker([element.gps.lat, element.gps.lng]).addTo(map);
+       marker1.bindPopup(`<a href='/property/${element.id}'>${element.area} sqm, ${element.bedroomCount} bedrooms, ${element.bathroomCount} bathrooms</a>`);
+      });
     } else if(gps?.lat){
       if(!map){map = L.map('map').setView([gps.lat, gps.lng], 15);}
       marker = L.marker([gps.lat, gps.lng]).addTo(map);

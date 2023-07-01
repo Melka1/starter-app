@@ -96,7 +96,7 @@ export default function Page({data}) {
     <>
     <div className={styles['property--landing--page']} style={{height:'100vh'}}>
       <NavBar/>
-      <Map center={data.gps}/>
+      <Map center={data.gps} properties={otherImages}/>
       <div className={styles['landing--page']}>
         <div className={styles['left']}>
           <div className={styles['params']}>

@@ -2,19 +2,45 @@
 
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import {Team, Testimonial, FeaturedProps, Footer, NavBar, OurFeatures, LandingPage, CTA, RecentProps} from '@/components/homepage'
+import { Properties } from '@/context/property'
+import {useRouter} from 'next/navigation'
+import axios from 'axios'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const router = useRouter()
+  const [properties, setProperties] = useContext(Properties)
+
   const [location, setLocation] = useState(null)
   const [propertyType, setPropertyType] = useState(null)
   const [bedroomCount, setBedroomCount] = useState(null)
   const [bathroomCount, setBathroomCount] = useState(null)
+  const [price, setPrice] = useState({ min:6000, max:10000 })
+  const [area, setArea] = useState({min:"", max:""})
 
-  function handleSearch(){
-    console.log("Search is on the way")
+  function handleFilter(){
+    axios.post('/api/property', {
+      data:{
+        state:location.value,
+        price:{
+          min:price.min.toString(),
+          max:price.max.toString()  
+        },
+        area,
+        bedroomCount:bedroomCount.value,
+        bathroomCount:bathroomCount.value
+      }
+    })
+    .then(data => {
+      // console.log(data)
+      setProperties(data.data)
+      localStorage.setItem('props', JSON.stringify(data.data))
+      router.push('/search')
+    })
+    .catch(err => console.log(err))
   }
   return (
     <>
@@ -35,7 +61,7 @@ export default function Home() {
           setBedroomCount={setBedroomCount}
           bathroomCount={bathroomCount}
           setBathroomCount={setBathroomCount}
-          handleSearch={handleSearch}
+          handleFilter={handleFilter}
         />
         <FeaturedProps/>
         <OurFeatures/>
