@@ -232,21 +232,21 @@ export const AboutProperty = ({
                     </div>
                     <hr className={styles.hr}/>
                     <div className={styles["property--description--detail"]}>
-                    <div className={styles["area"]} >
-                        <AiOutlineArrowsAlt color='white' fontSize={16}/>
-                        <p>{area?area:'64'} <span>m</span></p>
-                    </div>
-                    <div className={styles["bedroom--counts"]}>
-                        <MdBed color='white' fontSize={16}/>
-                        <p>{bedroom?bedroom:'2'}</p>
-                    </div>
-                    <div className={styles["bathroom--counts"]}>
-                        <BiBath color='white' fontSize={16}/>
-                        <p>{bathroom?bathroom:'2'}</p>
-                    </div>
-                    <div className={styles["details"]}>
-                        <AiOutlineEllipsis fontSize={16}/>
-                    </div>
+                        <div className={styles["area"]} >
+                            <AiOutlineArrowsAlt color='white' fontSize={16}/>
+                            <p>{area?area:'64'} <span>m</span></p>
+                        </div>
+                        <div className={styles["bedroom--counts"]}>
+                            <MdBed color='white' fontSize={16}/>
+                            <p>{bedroom?bedroom:'2'}</p>
+                        </div>
+                        <div className={styles["bathroom--counts"]}>
+                            <BiBath color='white' fontSize={16}/>
+                            <p>{bathroom?bathroom:'2'}</p>
+                        </div>
+                        <div className={styles["details"]}>
+                            <AiOutlineEllipsis fontSize={16}/>
+                        </div>
                     </div>
                 </div>
             </div>

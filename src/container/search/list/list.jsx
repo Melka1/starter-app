@@ -1,15 +1,17 @@
 
-import React, { FC, ReactComponentElement, ReactNode } from 'react'
+import React from 'react'
 import styles from './list.module.css'
-import Image from 'next/image'
 import Link from 'next/link'
-import { Prop5, Prop6, Prop7, Prop8, Prop10, Prop9 } from '../../../assets/images'
 import { CiHeart, CiLocationOn } from 'react-icons/ci'
 import { IoHeart } from 'react-icons/io5'
+import { AiOutlineArrowsAlt, AiOutlineEllipsis } from 'react-icons/ai'
+import { MdBed } from 'react-icons/md'
+import { BiBath } from 'react-icons/bi'
+import { Property } from '@/container/Card/card'
 
 const NoProduct=()=>(
   <div>
-    <p>No Properties found</p>
+    <p style={{fontFamily:'var(--font-text)'}}>No Properties found</p>
   </div>
 )
 
@@ -19,23 +21,19 @@ function List({lists}){
   function ListItem(){
     return (
       lists.map((prop)=>(
-        <Link href={`/property/${prop.id}`}>
-          <div className={styles["search--list"]}>
-            <img src={prop.images[0].url} alt=''/>
-            <div className={styles["prop--desc"]}>
-              <div>
-                <p className={styles["type"]}>{prop.name}</p>
-                <div className={styles["type--location"]}>
-                  <CiLocationOn color='rgba(0,0,0,0.5)' fontSize={16}/>
-                  <p className={styles["location--name"]}>{prop.city}</p>
-                </div>
-              </div>
-              <div className={styles['heart--icon']}>
-                <CiHeart fill='red' fontSize={20}/>
-              </div>
-            </div>
-          </div>
-        </Link>
+        <Property
+          key={prop.id}
+          id={prop.id}
+          name={prop.name}
+          url={prop.images[0].url}
+          // price={prop.price}
+          // paymentType={prop.paymentType}
+          city={prop.city}
+          state={prop.state}
+          bedroomCount={prop.bedroomCount}
+          bathroomCount={prop.bathroomCount}
+          area={prop.area}
+        />
       ))
     )
   }

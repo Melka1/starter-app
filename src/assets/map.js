@@ -24,10 +24,11 @@ const Map = ({
   var marker;
   useEffect(()=>{
     if(center){
-      map.setView([center.lat, center.lng], 15);
-    }
-
-    if(gps?.lat){
+      if(!map){map = L.map('map').setView([center.lat-(-0.002960965225268), center.lng-(-0.01120090484619)], 15);}
+      marker = L.marker([center.lat, center.lng]).addTo(map);
+      marker.bindPopup("<b>This is the property</b>").openPopup();
+      popup = L.popup();
+    } else if(gps?.lat){
       if(!map){map = L.map('map').setView([gps.lat, gps.lng], 15);}
       marker = L.marker([gps.lat, gps.lng]).addTo(map);
       popup = L.popup();
@@ -48,22 +49,30 @@ const Map = ({
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       
+      
     }).addTo(map);
     
   },[])
   
   function handleClick(e){
     console.log('click',e)
+    if(!center){
+      popup
+      .setLatLng(e.latlng)
+      .setContent("<p>You chose this location</p>")
+      .openOn(map);
+      setTimeout(()=>{
+        marker.setLatLng(e.latlng)
+        popup.closePopup()
+        marker.setPopupContent("This will be your property's location").openPopup();
+      }, 3000)
+      setGPS(e.latlng)
+      return
+    }
     popup
-    .setLatLng(e.latlng)
-    .setContent("<p>You chose this location</p>")
-    .openOn(map);
-    setTimeout(()=>{
-      marker.setLatLng(e.latlng)
-      popup.closePopup()
-      marker.setPopupContent("This will be your property's location").openPopup();
-    }, 3000)
-    setGPS(e.latlng)
+      .setLatLng(e.latlng)
+      .setContent(`<p>${e.latlng.lat +" "+e.latlng.lng }</p>`)
+      .openOn(map);
   }
 
   return (

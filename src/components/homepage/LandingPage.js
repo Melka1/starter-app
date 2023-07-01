@@ -1,23 +1,50 @@
-'use client'
-
-import React, {useState} from 'react'
+import React from 'react'
 import styles from './styles/landing.module.css'
 import {FiSearch} from 'react-icons/fi'
 import Select from 'react-select';
 
+import { options } from '@/data/locations';
+import { propertyTypes } from '@/data/propertyTypes';
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
+
+const roomCount = [
+  {value:'', label:'Any'},
+  { value: '1', label: '1' },
+  { value: '2', label: '2' },
+  { value: '3', label: '3' },
+  { value: '4', label: '4' },
+  { value: '5', label: '5' },
+  { value: '5+', label:'5+'}
 ];
 
-function LandingPage() {
-  const [selectedOption, setSelectedOption] = useState(null);
+function LandingPage({
+    setLocation, setBedroomCount, setBathroomCount, setPropertyType,
+    location, bedroomCount, bathroomCount, propertyType, handleSearch
+  }) {
 
-  const handleChange = (selectedOption) => {
-    setSelectedOption(selectedOption)
-  };
+  const handleLocationChange=(selectedLocation)=>{
+    console.log(selectedLocation)
+    setLocation(selectedLocation)
+  }
+
+  const handlePropertyTypeChange=(selectedPropertyType)=>{
+    if(selectedPropertyType === propertyTypes[0]){
+      setPropertyType(null)
+      return
+    }
+    console.log(selectedPropertyType)
+    setPropertyType(selectedPropertyType)
+  }
+  
+  const handleBedroomChange = (selectedBedroom) => {
+    console.log(selectedBedroom)
+    setBedroomCount(selectedBedroom)
+  }
+
+  const handleBathroomChange = (selectedBathroom) => {
+    console.log(selectedBathroom)
+    setBathroomCount(selectedBathroom)
+  }
 
   return (
     <div className={styles.landing+' section--padding'}>
@@ -39,24 +66,31 @@ function LandingPage() {
 
         <div className={styles['search--type']}>
           <Select
-            defaultValue={selectedOption}
-            onChange={setSelectedOption}
+            defaultValue={location}
+            onChange={handleLocationChange}
             options={options}
             placeholder='Location'
+            // styles={}
           />
           <Select
-            defaultValue={selectedOption}
-            onChange={setSelectedOption}
-            options={options}
-            placeholder='Category'
-          />
-          <Select
-            defaultValue={selectedOption}
-            onChange={setSelectedOption}
-            options={options}
+            defaultValue={propertyType}
+            onChange={handlePropertyTypeChange}
+            options={propertyTypes}
             placeholder='Property Type'
           />
-          <button>Search</button>
+          <Select
+            defaultValue={bedroomCount}
+            onChange={handleBedroomChange}
+            options={roomCount}
+            placeholder='Bedroom'
+          />
+          <Select
+            defaultValue={bathroomCount}
+            onChange={handleBathroomChange}
+            options={roomCount}
+            placeholder='Bathroom'
+          />
+          <button onClick={handleSearch}>Search</button>
         </div>
       </div>
     </div>

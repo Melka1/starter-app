@@ -1,9 +1,8 @@
 'use client'
 
 import { CTA, Footer, NavBar } from '../../components/homepage'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
-// import Map from '../../assets/map'
 import styles from './property.module.css'
 
 import { IoBed, IoChevronDown, IoClose, IoEllipsisHorizontal, IoExpand, IoSearch, IoShare } from 'react-icons/io5'
@@ -15,43 +14,37 @@ import {AiOutlineHeart, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
 
 import Image from 'next/image'
 
-import { Prop10, Prop5, Prop6, Prop7, Prop8, Prop9, Prop11, Prop12 } from '../../assets/images'
 import dynamic from 'next/dynamic'
-import { unstable_createStyleFunctionSx } from '@mui/system'
+import Carousel from '@/assets/carousel'
+import { User } from '@/context/user'
+import { Properties } from '@/context/property'
+import { Property } from '@/container/Card/card'
 
 const Map = dynamic(()=>import('../../assets/map'),{
     ssr: false
 })
 
-const properties = [{
-  type:'Apartment',
-  area:60,
-  bedRoomCount:3,
-  id:1
-},{
-  type:'House',
-  area:200,
-  bedRoomCount:2,
-  id:2
-}]
+let style = {
+  link:{
+    minWidth:'200px'
+  }
+}
 
-// export async function getStaticPaths(){
-//   console.log('hey')
-  
-//   return {
-//     paths:properties.map(i=>({
-//       params:{
-//         id:i.id.toString()
-//       }
-//     })),
-//     fallback:false
-//   }
-// }
+export default function Page({data}) {
+  const [user, setUser] = useContext(User)
+  const [properties, setProperties] = useContext(Properties)
+  const [otherImages, setOtherImages] = useState()
 
-
-export default function Page({}) {
   const [imageIndex, setImageIndex] = useState(0)
   const [translate, setTranslate] = useState(0)
+  console.log(data, user, properties)
+  
+  useEffect(()=>{
+    const localImages = JSON.parse(localStorage.getItem('images'))
+    const previewImages = properties.length!=0?properties:localImages
+    console.log(localImages, properties, previewImages)
+    setOtherImages(previewImages)
+  },[])
 
   function handleScrollLeft(){
     if(translate==0)return
@@ -71,15 +64,43 @@ export default function Page({}) {
     }
   }
 
+  const PropList =()=>(
+    <>
+      {otherImages.map((prop, index)=>{
+        let border = data.id==prop.id?({borderColor:'rgb(9, 84, 108)'}):{}
+        let conditionalStyle = {...style, link:{
+          ...style.link, ...border
+        }}
+        return (
+        <Property 
+          key={prop.id} 
+          id={prop.id}
+          url={prop.images[0].url}
+          name={prop.name}
+          price={prop.price}
+          paymentType={prop.paymentType}
+          city={prop.city}
+          state={prop.state}
+          bedroomCount={prop.bedroomCount}
+          bathroomCount={prop.bathroomCount}
+          area={prop.area}
+          style={conditionalStyle}
+        />
+      )})
+      }
+    </>
+  ) 
+  const images = data.images.map(image=>({content:image.url}))
+
   return (
     <>
     <div className={styles['property--landing--page']} style={{height:'100vh'}}>
       <NavBar/>
-      <Map/>
+      <Map center={data.gps}/>
       <div className={styles['landing--page']}>
         <div className={styles['left']}>
           <div className={styles['params']}>
-            <div className={styles['param']}><p>Type: Apartment</p><button><IoClose/></button></div>
+            <div className={styles['param']}><p>Type: {data.name}</p><button><IoClose/></button></div>
             <div className={styles['param']}><p>Price: $150-530</p><button><IoClose/></button></div>
             <div><p>Area</p> <IoChevronDown/></div>
             <div><p>Floor</p> <IoChevronDown/></div>
@@ -92,22 +113,10 @@ export default function Page({}) {
             <button><IoClose/></button>
           </div>
         </div>
+
         <div className={styles['right']}>
           <div className={styles['product--images']}>
-            <div className={styles['carousel']} style={{transform:`translateX(-${imageIndex*100}%)`}}>
-              <Image src={Prop5} alt='property'/>
-              <Image src={Prop6} alt='property'/>
-              <Image src={Prop7} alt='property'/>
-              <Image src={Prop8} alt='property'/>
-              <Image src={Prop9} alt='property'/>
-            </div>
-            <div className={unstable_createStyleFunctionSx['image--navigator']}>
-              <button onClick={()=>setImageIndex(0)}><span style={{opacity:`${imageIndex==0?'1':'0'}`}}></span></button>
-              <button onClick={()=>setImageIndex(1)}><span style={{opacity:`${imageIndex==1?'1':'0'}`}}></span></button>
-              <button onClick={()=>setImageIndex(2)}><span style={{opacity:`${imageIndex==2?'1':'0'}`}}></span></button>
-              <button onClick={()=>setImageIndex(3)}><span style={{opacity:`${imageIndex==3?'1':'0'}`}}></span></button>
-              <button onClick={()=>setImageIndex(4)}><span style={{opacity:`${imageIndex==4?'1':'0'}`}}></span></button>
-            </div>
+            <Carousel images={images}/>
             <div className={styles['top--content']}>
               <div><p>4.5</p></div>
               <button><AiOutlineHeart/></button>
@@ -122,13 +131,13 @@ export default function Page({}) {
                 <BsShare color={'lightgray'}/>
               </Link>
             </div>
-            <h4>Cosy apartment for rent</h4>
-            <span className={styles['property--location']}><SlLocationPin/> <p>184 A route du la Larville, D6000 Nice</p></span>
+            <h4>{data.name} for rent</h4>
+            <span className={styles['property--location']}><SlLocationPin/> <p>{data.city+', '+data.state}</p></span>
             <div className={styles['property--stats']}>
-              <span><MdBed/><p>2</p></span>
-              <span><BiBath/><p>1</p></span>
-              <span><BiCar/><p>1</p></span>
-              <span><IoExpand/><p className={styles['area']}>60m</p></span>
+              <span><MdBed/><p>{data.bedroomCount}</p></span>
+              <span><BiBath/><p>{data.bathroomCount}</p></span>
+              {/* <span><BiCar/><p>1</p></span> */}
+              <span><IoExpand/><p className={styles['area']}>{data.area}m</p></span>
             </div>
             <p className={styles['property--description--content']}>
               Located on the plateou central and close to all amenities, the location of this apartment on the first floor of  a downtown bulding will be ideal  for your... <Link href={'/'}>see details</Link>
@@ -136,7 +145,7 @@ export default function Page({}) {
 
             <div className={styles['property--price']}>
               <p>Rental Price: </p>
-              <p className={styles['cost']}>$80<span>/night</span></p>
+              <p className={styles['cost']}>${data.price}<span>/{data.paymentType}</span></p>
             </div>
             <div className={styles['controls']}>
               <button className={styles['contacts']}>Show contacts</button>
@@ -148,104 +157,42 @@ export default function Page({}) {
       </div>
     </div>
     {/* <div className='property--details'></div> */}
-    <div className={styles['other--properties']}>
+    {otherImages&&<div className={styles['other--properties']}>
+        <div onClick={handleScrollLeft} className={styles['scroll--left']}><AiOutlineLeft/></div>
         <div style={{transform:`translateX(-${translate}px)`}} className={styles['props']}>
-            <Link className={styles['the--prop']} href={'/property/2'}>
-            <Image src={Prop10} alt='other properties'/>
-            <div className={styles['property--specs']}>
-                <div className={styles['spec--container']}>
-                <p className={styles['cost']}>$55<span>/night</span></p>
-                <p className={styles['location']}>3517 W.Gray St. Utica</p>
-                <div className={styles['features']}>
-                    <span><MdBed/><p>2</p></span>
-                    <span><BiBath/><p>1</p></span>
-                    <span><IoExpand/><p className={styles['area']}>105m</p></span>
-                </div>
-                </div>
-                <button className={styles['like']}><AiOutlineHeart/></button>
-            </div>
-            </Link>
-            <Link className={styles['the--prop']} href={'/property/2'}>
-            <Image src={Prop11} alt='other properties'/>
-            <div className={styles['property--specs']}>
-                <div className={styles['spec--container']}>
-                <p className={styles['cost']}>$85<span>/night</span></p>
-                <p className={styles['location']}>3517 W.Gray St. Utica</p>
-                <div className={styles['features']}>
-                    <span><MdBed/><p>2</p></span>
-                    <span><BiBath/><p>1</p></span>
-                    <span><IoExpand/><p className={styles['area']}>180m</p></span>
-                </div>
-                </div>
-                <button className={styles['like']}><AiOutlineHeart/></button>
-            </div>
-            </Link>
-            <Link className={styles['the--prop']} href={'/property/2'}>
-            <Image src={Prop12} alt='other properties'/>
-            <div className={styles['property--specs']}>
-                <div className={styles['spec--container']}>
-                <p className={styles['cost']}>$75<span>/night</span></p>
-                <p className={styles['location']}>3517 W.Gray St. Utica</p>
-                <div className={styles['features']}>
-                    <span><MdBed/><p>2</p></span>
-                    <span><BiBath/><p>1</p></span>
-                    <span><IoExpand/><p className={styles['area']}>95m</p></span>
-                </div>
-                </div>
-                <button className={styles['like']}><AiOutlineHeart/></button>
-            </div>
-            </Link>
-            <Link className={styles['the--prop']} href={'/property/2'}>
-            <Image src={Prop9} alt='other properties'/>
-            <div className={styles['property--specs']}>
-                <div className={styles['spec--container']}>
-                <p className={styles['cost']}>$105<span>/night</span></p>
-                <p className={styles['location']}>3517 W.Gray St. Utica</p>
-                <div className={styles['features']}>
-                    <span><MdBed/><p>2</p></span>
-                    <span><BiBath/><p>1</p></span>
-                    <span><IoExpand/><p className={styles['area']}>120m</p></span>
-                </div>
-                </div>
-                <button className={styles['like']}><AiOutlineHeart/></button>
-            </div>
-            </Link>
-            <Link className={styles['the--prop']} href={'/property/2'}>
-            <Image src={Prop8} alt='other properties'/>
-            <div className={styles['property--specs']}>
-                <div className={styles['spec--container']}>
-                <p className={styles['cost']}>$60<span>/night</span></p>
-                <p className={styles['location']}>3517 W.Gray St. Utica</p>
-                <div className={styles['features']}>
-                    <span><MdBed/><p>2</p></span>
-                    <span><BiBath/><p>1</p></span>
-                    <span><IoExpand/><p className={styles['area']}>60m</p></span>
-                </div>
-                </div>
-                <button className={styles['like']}><AiOutlineHeart/></button>
-            </div>
-            </Link>
-            <Link className={styles['the--prop']} href={'/property/2'}>
-            <Image src={Prop7} alt='other properties'/>
-            <div className={styles['property--specs']}>
-                <div className={styles['spec--container']}>
-                <p className={styles['cost']}>$40<span>/night</span></p>
-                <p className={styles['location']}>3517 W.Gray St. Utica</p>
-                <div className={styles['features']}>
-                    <span><MdBed/><p>2</p></span>
-                    <span><BiBath/><p>1</p></span>
-                    <span><IoExpand/><p className={styles['area']}>54m</p></span>
-                </div>
-                </div>
-                <button className={styles['like']}><AiOutlineHeart/></button>
-            </div>
-            </Link>
+            <PropList/>
+            <PropList/>
+            <PropList/>
         </div>
-        <button onClick={handleScrollLeft} className={styles['scroll--left']}><AiOutlineLeft/></button>
-        <button onClick={handleScrollRight} className={styles['scroll--right']}><AiOutlineRight/></button>
-    </div>
-    {/* <CTA/> */}
+        <div onClick={handleScrollRight} className={styles['scroll--right']}><AiOutlineRight/></div>
+    </div>}
     <Footer />
     </>
   )
+}
+
+export async function getStaticProps({params}){
+  console.log(params, "prop")
+  const res = await fetch(`http://localhost:3000/api/property?id=${params.id}`)
+  const data = await res.json()
+  console.log(data)
+  return ({
+    props:{data:data[0]}
+  })
+
+}
+
+export async function getStaticPaths(props){
+  const res = await fetch(`http://localhost:3000/api/property`,{
+    method: "PUT",
+  })
+  const data = await res.json()
+  return ({
+    paths:data.map(id=>({
+      params:{
+        id
+      }
+    })),
+    fallback:false
+  })
 }

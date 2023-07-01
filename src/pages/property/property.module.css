@@ -1,5 +1,6 @@
 .property--landing--page {
   position: relative;
+  font-family: var(--font-text);
 }
 
 /* #map {
@@ -14,16 +15,33 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   /* align-items: start; */
 }
 
+.property--landing--page .landing--page>div{
+  position: absolute;
+  top: 100px;
+}
+
+.landing--page .left{
+  width: 45%;
+  left: 50px;
+}
+
+.landing--page .right{
+  width: 50%;
+  right: 0;
+}
+
 .landing--page .left .params {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  gap: 1rem;
   /* align-items: baseline; */
 }
 
@@ -262,7 +280,7 @@
   gap: 0.5rem;
   align-items: baseline;
   font-size: 0.8rem;
-  margin-top: auto;
+  margin-top: 6rem;
   margin-bottom: 1rem;
   font-family: var(--font-text);
 }
@@ -344,6 +362,7 @@
 
 .other--properties {
   display: flex;
+  align-items:center;
   /* gap: 1rem; */
   width:100%;
   /* overflow: auto; */
@@ -352,133 +371,49 @@
   box-shadow: 0 0 10px 2px lightgray;
 }
 
-.other--properties .props .the--prop {
-  display: flex;
-  flex-direction: column;
-  width:250px;
-  border-radius: 1rem;
-  border: 2px solid rgb(182, 177, 177);
-  overflow: hidden;
-}
-
-.other--properties .props .the--prop img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  height: auto;
-  object-fit: cover;
-}
-
-.property--specs {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  background: white;
-}
-
-.features span {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 18px;
-}
-
-.features {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  /* padding: 1rem; */
-}
-
-.features span p, .property--specs .location {
-  font-size: 0.8rem;
-}
-
-.property--specs .location {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.property--specs .cost {
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.property--specs .cost span {
-  font: 0.8rem normal;
-  font-family: var(--font-text);
-}
-
-.the--prop .like {
-  width: 35px;
-  height: 35px;
-  border: 1px solid transparent;
-  outline: none;
-  color: gray;
-  background-color: transparent;
-  border-radius: 50%;
-  cursor: initial;
-  /* padding: ; */
-}
-
-.the--prop .like:hover {
-  background-color: transparent;
-  color: white;
-}
-
-.like svg {
-  width: 80%;
-  height: 80%;
-}
-
-.the--prop {
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.the--prop:hover {
-  border-color: black !important;
-  /* transform: scale(1.05); */
-}
-
 .props {
   display: flex;
   gap: 3rem;
   padding: 0 3rem;
-  /* overflow: auto; */
+  overflow: auto;
   transition: all 0.3s ease-in-out;
 }
 
-.area {
-  position: relative;
-}
-
-.area::before {
-  position: absolute;
-  content: "2";
-  top: 0;
-  right: -4px;
-  font-size: 8px;
-
-}
-
-.other--properties>button {
-  position: absolute;
-  top: 0;
-  width: 3rem;
-  height: 100%;
+.other--properties .scroll--right,
+.other--properties .scroll--left {
+  position:absolute;
+  top:calc(50% - 20px);
+  min-width: 40px;
+  height: 40px;
+  border-radius:50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: #97909080;
   color: white;
   font-size: 1rem;
-  left: 0;
   outline: none;
   border: none;
+  opacity:0;
+  transition:0.3s ease-in-out;
+  z-index:2;
+  cursor:pointer;
+}
+
+.other--properties:hover .scroll--right,
+.other--properties:hover .scroll--left {
+  opacity: 1;
 }
 
 .other--properties .scroll--right {
-  right: 0;
-  left: unset;
+  right: 1rem;
+}
+
+.other--properties .scroll--left {
+  left: 1rem;
+}
+
+.other--properties .scroll--right:hover,
+.other--properties .scroll--left:hover{
+  background: rgba(0, 0, 0, 0.5);
 }

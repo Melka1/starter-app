@@ -37,8 +37,8 @@
 .footer--logo--desc {
   font-family: var(--font-text);
   font-weight: 500;
-  font-size: 18px;
-  line-height: 32px;
+  font-size: 16px;
+  line-height: 24px;
   font-feature-settings: 'liga';
   color: rgba(47, 35, 79, 0.5);
 }
@@ -55,8 +55,8 @@
 .property--description {
   font-family: var(--font-text);
   font-weight: 500;
-  font-size: 18px;
-  line-height: 32px;
+  font-size: 16px;
+  line-height: 24px;
   color: #2F234F;
   display: flex;
   flex-direction: column;
@@ -96,8 +96,8 @@
 .contact--info .address {
   font-family: var(--font-text);
   font-weight: 500;
-  font-size: 18px;
-  line-height: 32px;
+  font-size: 16px;
+  line-height: 24px;
   color: #2F234F;
 }
 

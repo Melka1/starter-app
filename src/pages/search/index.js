@@ -8,10 +8,12 @@ import Header from '../../container/search/header/header'
 import {Filter} from '../../container/search/filter/filter'
 import {List} from '../../container/search/list/list'
 import { User } from '@/context/user'
+import { Properties } from '@/context/property'
 
 
 function Page({date}) {
   const [user, setUser] = useContext(User)
+  const [properties, setProperties] = useContext(Properties)
   
   const [location, setLocation] = useState({})//{value:'', label:''}
   const [price, setPrice] = useState({ min:6000, max:10000 })
@@ -40,6 +42,8 @@ function Page({date}) {
     .then(data => {
       // console.log(data)
       setList(data.data)
+      setProperties(data.data)
+      localStorage.setItem('images', JSON.stringify(data.data))
     })
     .catch(err => console.log(err))
   }

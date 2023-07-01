@@ -1,7 +1,7 @@
 export const priceType = [
     {
-      name:'per Day',
-      value:'Day'
+      name:'per Night',
+      value:'Night'
     },
     {
       name:'per Week',
