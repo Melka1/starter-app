@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
   console.log(req.query, req.body)
 
-  const { email, password } = req.query
+  const { email, password } = req.body
  
   const user = await prisma.User.findUnique({
     where: {
