@@ -7,6 +7,7 @@ import {Team, Testimonial, FeaturedProps, Footer, NavBar, OurFeatures, LandingPa
 import { Properties } from '@/context/property'
 import {useRouter} from 'next/navigation'
 import axios from 'axios'
+import Provider from '@/Provider/provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -51,25 +52,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <NavBar/>
-        <LandingPage
-          location={location}
-          setLocation={setLocation}  
-          propertyType={propertyType}
-          setPropertyType={setPropertyType}
-          bedroomCount={bedroomCount}
-          setBedroomCount={setBedroomCount}
-          bathroomCount={bathroomCount}
-          setBathroomCount={setBathroomCount}
-          handleFilter={handleFilter}
-        />
-        <FeaturedProps/>
-        <OurFeatures/>
-        <RecentProps/>
-        <Team/>
-        <Testimonial/>
-        <CTA/>
-        <Footer/>
+        <Provider>
+          <NavBar/>
+          <LandingPage
+            location={location}
+            setLocation={setLocation}  
+            propertyType={propertyType}
+            setPropertyType={setPropertyType}
+            bedroomCount={bedroomCount}
+            setBedroomCount={setBedroomCount}
+            bathroomCount={bathroomCount}
+            setBathroomCount={setBathroomCount}
+            handleFilter={handleFilter}
+          />
+          <FeaturedProps/>
+          <OurFeatures/>
+          <RecentProps/>
+          <Team/>
+          <Testimonial/>
+          <CTA/>
+          <Footer/>
+        </Provider>
       </main>
     </>
   )

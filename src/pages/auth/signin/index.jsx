@@ -1,49 +1,28 @@
 'use client'
 
-import React, {useState, useContext} from "react";
+import React, {useState} from "react";
 import {useRouter} from 'next/navigation'
-// import {useSession, signIn, signOut} from 'next-auth/react';
+import {useSession, signIn, signOut} from 'next-auth/react';
 import styles from './login.module.css'
-import { User } from "../../context/user";
 
 export default function SignIn(){
-    const [user, setUser] = useContext(User);
 
-    const router = useRouter()
+    // const router = useRouter()
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    // const session = useSession()
 
     const isInvalid = password===''||emailAddress==='';
 
-    const handleSignIn = (event) =>{
+    const handleSignIn = async(event) =>{
       console.log(emailAddress, password)
-      event.preventDefault();
-      fetch(`/api/user?email=${emailAddress}&password=${password}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      })
-      .then(res => res.json())
-      .then(data=>{
-        if(data.status==400){
-          setError(data.message)
-          setEmailAddress("")
-          setPassword("")
-        } else {
-          console.log(data)
-          // session.data = data
-          // session.status = "authenticated"
-          setUser(data)
-          router.push("/property/add")
-        }
-
+      const user = await signIn('credentials',{
+        email:emailAddress,
+        password,
+        redirect:true,
+        callbackUrl:'/'
       })
     }
-
-    console.log(user)
 
     if(emailAddress && error){
       setError("")
@@ -54,7 +33,7 @@ export default function SignIn(){
           <div className={styles["signin--container"]}>
               <h1 className={styles["signin--title"]}>Log In</h1>
               {error && <div className={styles["submit--error"]}>{error}</div>}
-              <form id="signin" className={styles["signin--base"]} onSubmit={handleSignIn}>
+              <div id="signin" className={styles["signin--base"]} >
                 <input 
                   type="email" 
                   name="email" 
@@ -71,13 +50,13 @@ export default function SignIn(){
                   value={password}
                   onChange={({target})=>setPassword(target.value)} 
                 />
-                <button disabled={isInvalid} type="submit" className={styles["signin--submit"]}>
+                <button disabled={isInvalid} type="submit" className={styles["signin--submit"]} onClick={handleSignIn}>
                   Log In
                 </button>
                 <button onClick={()=>signIn()} type="button" className={styles["signin--submit"]}>
                   Log In with Google
                 </button>
-              </form>
+              </div>
               <p className={styles["signin--text"]}>
                 Don't have an account? <a className={styles["signin--link"]} href="/signin">Sign up now.</a>
               </p>

@@ -2,7 +2,6 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 export const authOptions = {
-  // Configure one or more authentication providers
   
   providers: [
     GoogleProvider({
@@ -10,18 +9,20 @@ export const authOptions = {
       clientSecret: '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',
     }),
     Credentials({
-      id:'signin',
-      name:'signin',
-      type:'credentials',
+      
+      name:'Credentials',
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        email: { label: "email", type: "text" },
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
         
-        const res = await fetch("/api/user", {
+        const res = await fetch("http://localhost:3000/api/user", {
           method: 'POST',
-          body: JSON.stringify(credentials),
+          body: JSON.stringify({
+            email:credentials.email,
+            password:credentials.password
+          }),
           headers: { "Content-Type": "application/json" }
         })
         const user = await res.json()
@@ -40,6 +41,4 @@ export const authOptions = {
   
 }
 
-const handler = NextAuth(authOptions)
-
-export { handler as GET, handler as POST}
+export default NextAuth(authOptions)
