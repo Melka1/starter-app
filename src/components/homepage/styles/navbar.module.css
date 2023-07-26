@@ -14,6 +14,7 @@
 .logo {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 .logo h1 {
@@ -49,4 +50,53 @@
 
 .links ul li:hover div{
   width: 100%;
+}
+
+
+@media screen and (max-width:768px){
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .links ul li {
+    font-size: 12px;
+  } 
+}
+
+@media screen and (max-width:425px) {
+  .links {
+    display: none;
+  }
+
+  .logo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .logo img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    padding: 1rem;
+  }
 }
