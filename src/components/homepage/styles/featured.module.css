@@ -101,4 +101,103 @@
 
 .button:hover {
   transform: scale(1.08);
+} 
+
+@media screen and (max-width:1024px) {
+  .feature--desc .name {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .feature--desc .desc {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .featured .title {
+    margin-top: 50px;
+  }
+
+  .feature--container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width:425px) {
+  .feature--container {
+    grid-template-columns: initial;
+    grid-template-rows: initial;
+    padding: 0 2rem;
+  }
+
+  .feature--container img {
+    aspect-ratio: 16/10;
+    object-fit: cover;
+  }
+
+  .featured {
+    padding-top: 2rem;
+  }
+
+  .feature--container {
+    gap: 24px;
+  }
+
+  .feature--container:hover .feature--desc {
+    gap: 1rem;
+  }
+
+  .feature--desc {
+    padding: 32px;
+  }
+
+  .feature--desc .name {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .feature--desc .desc {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width:375px) {
+  /* .feature:hover .feature--desc {
+    gap: 0.75rem;
+  } */
+
+  .feature--container:hover .feature--desc {
+    gap: 0.75rem;
+  }
+
+  .feature--container {
+    padding: 0 1rem;
+    /* gap: 16px; */
+  }
+  
+ 
+}
+
+@media screen and (max-width:320px) {
+
+  .feature--container {
+    padding: 0;
+  }
+
+   .feature--desc {
+    padding: 32px;
+  }
+
+  .feature--desc .name {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .feature--container .desc {
+    font-size: 10px;
+    line-height: 15px;
+  }
 }
