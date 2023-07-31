@@ -171,6 +171,11 @@ a {
   .subtitle {
     font-size: 18px;
   }
+
+  .heading2 {
+    font-size: 21px;
+    line-height: 28px;
+  }
 }
 
 @media screen and (max-width:768px) {
@@ -178,6 +183,14 @@ a {
     font-size: 16px;
   }
 
+  .heading1 {
+    font-size: 36px;
+  }
+
+  .heading2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 @media screen and (max-width:425px) {
@@ -213,6 +226,11 @@ a {
   font-size: 24px;
   line-height: 36px;
  } 
+
+ .heading2 {
+  font-size: 14px;
+  line-height: 21px;
+ }
 
  .subtitle {
   font-size: 12px;

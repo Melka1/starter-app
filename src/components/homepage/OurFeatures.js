@@ -5,7 +5,7 @@ import {Cover} from '@/assets/images'
 
 function OurFeatures() {
   return (
-    <div className={styles['our-features'] + ' section--padding'}>
+    <div className={styles['our--features'] + ' section--padding'}>
       <p className='heading1 left'>Our Features</p>
       <div className={styles['our--feature--container']}>
         <div className={styles['our--feature--list']}>
