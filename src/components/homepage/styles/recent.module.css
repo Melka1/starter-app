@@ -6,19 +6,32 @@
 
 
 .recent--prop {
-  display: flex;
+  display: grid;
   gap: 32px;
+  grid-template-columns: 3fr 4fr;
+  width: 100%;
 }
 
 .recent--prop:nth-child(2n){
-  flex-direction: row-reverse;
+  grid-template-columns: 4fr 3fr;
+}
+
+.recent--prop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recent--prop:nth-child(2n)>div{
+  grid-column: 1/2;
+  grid-row: 1/2;
 }
 
 .recent--props--container {
   display: flex;
   flex-direction: column;
   gap:32px;
- 
+  width: 100%;
 }
 
 .recent--prop--desc--container {
@@ -31,8 +44,8 @@
 .recent--prop--desc--title {
   font-family: var(--font-title);
   font-weight: 700;
-  font-size: 28px;
-  line-height: 42px;
+  font-size: 30px;
+  line-height: 45px;
   letter-spacing: 0.02em;
   text-transform: capitalize;
 
@@ -43,8 +56,8 @@
 .recent--prop--desc {
   font-family: var(--font-text);
   font-weight: 500;
-  font-size: 14px;
-  line-height: 26px;
+  font-size: 16px;
+  line-height: 30px;
   font-feature-settings: 'liga' off;
 
   color: rgba(47, 35, 79, 0.8);
@@ -65,8 +78,8 @@
 .recent--prop--cost {
   font-family: var(--font-text);
   font-weight: 600;
-  font-size: 42px;
-  line-height: 63px;
+  font-size: 45px;
+  line-height: 60px;
   letter-spacing: 0.04em;
   text-transform: capitalize;
 
@@ -102,4 +115,62 @@
 .recent--props--view:hover {
   background: #F6F3FF;
   border-color: #2F234F;
+}
+
+@media screen and (max-width:1024px) {
+  .recent--prop--desc--title {
+    font-size: 27px;
+    line-height: 36px;
+  }
+
+  .recent--prop--desc {
+    font-size: 14px;
+    line-height: 28px;
+  }
+
+  .recent--prop--cost {
+    font-size: 36px;
+    line-height: 56px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .recent--prop {
+    grid-template-columns: 3fr 7fr;
+    gap: 20px;
+  }
+
+  .recent--prop:nth-child(2n){
+    grid-template-columns: 7fr 3fr;
+  }
+  
+  .recent--prop--desc--container {
+    padding: 20px;
+  }
+
+  .recent--prop--desc--title {
+    font-size: 21px;
+    line-height: 28px;
+  }
+
+  .recent--prop--desc {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .recent--prop--cost {
+    font-size: 30px;
+    line-height: 45px;
+  }
+
+  .recent--prop--cost span {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .recent--props--view {
+    font-size: 14px;
+    line-height: 21px;
+    padding: 10px 20px;
+    margin-top: 40px;
+  }
 }
