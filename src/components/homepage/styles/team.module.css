@@ -1,7 +1,8 @@
 .teams {
-  display: flex;
+  display: grid;
   width: 100%;
-  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  /* justify-content: center; */
   gap: 50px;
 }
 
@@ -15,6 +16,12 @@
   border-radius: 8px;
   gap: 16px;
   transition: all ease 0.3s;
+}
+
+.team--member img {
+  width: 100%;
+  height:auto;
+
 }
 
 .team--member:hover {
@@ -35,8 +42,8 @@
 .team--member--title {
   font-family: var(--font-text);
   font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 18px;
+  line-height: 24px;
 
   color: rgba(47, 35, 79, 0.5);
 }
@@ -61,3 +68,80 @@
   
   visibility: visible;
 } 
+
+@media screen and (max-width:1024px) {
+  .teams {
+    gap: 40px;
+  }
+
+  .team--member {
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .team--member--name {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .team--member--title {
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .teams {
+    /* grid-template-columns: 1fr 1fr;
+    width: 70%; */
+    gap: 5px;
+  }
+
+  .team--member img {
+    padding: 1rem;
+  }
+
+  .team--member {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .team--member--name {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .team--member--title {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .socials a svg {
+    font-size: 12px;
+  }
+
+}
+
+@media screen and (max-width:425px) {
+  .teams {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .socials a svg {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  
+}
+
+@media screen and (max-width:320px) {
+  .socials {
+    gap: 10px;
+  }
+
+  .socials a svg {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
